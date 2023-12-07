@@ -1,16 +1,10 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
     _id: String,
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    firstName: String,
-    email: String,
-    lastName: String,
-    dob: Date,
-    role: {
-      type: String,
-      enum: ["STUDENT", "FACULTY", "ADMIN", "USER"],
-      default: "USER" },
+    postId: String,
+    commenterId: String,
+    timeStamp: Date,
+    content: String,
   },
-  { collection: "users" });
-export default userSchema;
+  { collection: "comments" });
+export default commentSchema;
