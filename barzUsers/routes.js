@@ -9,7 +9,6 @@ function UserRoutes(app) {
     };
     
     const signup = async (req, res) => {
-        console.log("meow");
         const user = await dao.findUserByUsername(
           req.body.username);
         if (user) {
