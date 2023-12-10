@@ -1,5 +1,5 @@
 import model from "./model.js";
-export const creatPost = (post) => model.create(post);
+export const createPost = (post) => model.create(post);
 export const findAllPosts = () => model.find();
 export const findPostById = (postId) => model.findById(postId);
 export const findPostByUser = (userId) => 
