@@ -42,3 +42,4 @@ function PostRoutes(app){
     app.put("/api/posts/:postId", updatePost);
 
 }
+ export default PostRoutes;
