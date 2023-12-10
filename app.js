@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import UserRoutes from './barzUsers/routes.js';
 import cors from "cors";
 import PostRoutes from './posts/routes.js';
+import LikeRoutes from './likes/routes.js';
+import FollowRoutes from './follows/routes.js';
 
 // mongoose.connect("mongodb://127.0.0.1:27017/barz");
 const atlas = "mongodb+srv://nagishaca:S0JPLeKkXzocpddn@cluster0.0t0gakn.mongodb.net/?retryWrites=true&w=majority";
@@ -14,4 +16,6 @@ app.use(cors());
 app.use(express.json());
 UserRoutes(app)
 PostRoutes(app)
+LikeRoutes(app)
+FollowRoutes(app)
 app.listen(process.env.PORT || 4000)
