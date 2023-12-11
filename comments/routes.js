@@ -39,3 +39,5 @@ function CommentRoutes(app){
     app.delete("/api/comments/:commentId", deleteComment);
 
 }
+
+export default CommentRoutes;
