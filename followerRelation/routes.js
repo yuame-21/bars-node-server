@@ -21,13 +21,13 @@ function FollowRoutes(app){
         res.json(follow);
     };
 
-    const findFollowByFollowerId = async (req, res) => {
-        const follow = await dao.findFollowByFollowerId(req.params.followerId);
+    const findFollowsByFollowerId = async (req, res) => {
+        const follow = await dao.findFollowsByFollowerId(req.params.followerId);
         res.json(follow);
     };
 
-    const findFollowByFollowedId = async (req, res) => {
-        const follow = await dao.findFollowByFollowedId(req.params.followedId);
+    const findFollowsByFollowedId = async (req, res) => {
+        const follow = await dao.findFollowsByFollowedId(req.params.followedId);
         res.json(follow);
     };
 
@@ -35,8 +35,8 @@ function FollowRoutes(app){
     app.delete("/api/follows/:followId", deleteFollow);
     app.get("/api/follows", findAllFollowRelations);
     app.get("/api/follows/:followId", findFollowById);
-    app.get("/api/follows/follower/:followerId", findFollowByFollowerId);
-    app.get("/api/follows/followed/:followedId", findFollowByFollowedId);
+    app.get("/api/follows/follower/:followerId", findFollowsByFollowerId);
+    app.get("/api/follows/followed/:followedId", findFollowsByFollowedId);
 }
 
 export default FollowRoutes;

@@ -22,7 +22,7 @@ function PostRoutes(app){
     };
 
     const findPostByUser = async (req, res) => {
-        const posts = await dao.findPostByUser(req.params.userId);
+        const posts = await dao.findPostsByUser(req.params.userId);
         res.json(posts);
     };
 
