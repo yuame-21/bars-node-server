@@ -6,6 +6,7 @@ import PostRoutes from './posts/routes.js';
 import LikeRoutes from './likes/routes.js';
 import FollowRoutes from './followerRelation/routes.js';
 import SongRoutes from './songs/routes.js';
+import CommentRoutes from './comments/routes.js';
 
 // mongoose.connect("mongodb://127.0.0.1:27017/barz");
 const atlas = "mongodb+srv://nagishaca:S0JPLeKkXzocpddn@cluster0.0t0gakn.mongodb.net/?retryWrites=true&w=majority";
@@ -25,4 +26,5 @@ PostRoutes(app)
 LikeRoutes(app)
 FollowRoutes(app)
 SongRoutes(app)
+CommentRoutes(app)
 app.listen(process.env.PORT || 4000)
