@@ -4,5 +4,5 @@ const followerRelationSchema = new mongoose.Schema({
     followerId: String,
     followedId: String,
 },
-  { collection: "followerRelation" });
+  { collection: "followerRelations" });
 export default followerRelationSchema;
