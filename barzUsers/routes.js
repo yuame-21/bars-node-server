@@ -42,7 +42,13 @@ function UserRoutes(app) {
         const status = await dao.deleteUser(req.params.userId);
         res.json(status);
     };
+
+    const getUserById = async (req, res) => {
+        currentUser = await dao.findUserById(req.params.userId);
+        res.json(currentUser);
+    };
     
+    app.get("/api/users/:userId", getUserById);
     app.post("/api/users", createUser);
     app.post("/api/users/signup", signup);
     app.post("/api/users/signin", signin);
