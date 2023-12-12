@@ -7,6 +7,11 @@ function UserRoutes(app) {
         const user = await dao.createUser(req.body);
         res.json(user);
     };
+
+    const findAllUsers = async (req, res) => {
+        const users = await dao.findAllUsers();
+        res.json(users);
+    }
     
     const signup = async (req, res) => {
         const user = await dao.findUserByUsername(
@@ -25,7 +30,7 @@ function UserRoutes(app) {
         currentUser = await dao.findUserByCredentials(username, password);
         if(currentUser) {
             res.json(currentUser);
-            return;
+            return; 
         }
         res.status(400).json(
             { message: "User Not Found" });
@@ -58,13 +63,14 @@ function UserRoutes(app) {
     };
     
     app.get("/api/users/:userId", getUserById);
+    app.get("/api/users", findAllUsers)
     app.post("/api/users", createUser);
     app.post("/api/users/signup", signup);
     app.post("/api/users/signin", signin);
     app.post("/api/users/signout", signout);
     app.put("/api/users/:userId", updateUser);
     app.delete("/api/users/:userId", deleteUser);
-    app.get("/api/users/profile", profile);
+    app.post("/api/users/profile", profile);
 }
 
 export default UserRoutes;
