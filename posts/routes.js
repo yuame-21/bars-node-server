@@ -26,6 +26,11 @@ function PostRoutes(app){
         res.json(posts);
     };
 
+    const findPostsByUsername = async (req, res) => {
+        const posts = await dao.findPostsByUsername(req.params.username);
+        res.json(posts);
+    }
+
     const updatePost = async (req, res) => {
         const { postId } = req.params;
         const status = await dao.updatePost(postId, req.body);
@@ -38,6 +43,7 @@ function PostRoutes(app){
     app.delete("/api/posts/:postId", deletePost);
     app.get("/api/posts", findAllPosts);
     app.get("/api/posts/:postId", findPostById);
+    app.get("/api/posts/username/:username", findPostsByUsername);
     app.get("/api/posts/user/:userId", findPostByUser);
     app.put("/api/posts/:postId", updatePost);
 
