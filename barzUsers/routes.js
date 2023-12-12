@@ -23,7 +23,12 @@ function UserRoutes(app) {
     const signin = async (req, res) => { 
         const { username, password } = req.body;
         currentUser = await dao.findUserByCredentials(username, password);
-        res.json(currentUser);
+        if(currentUser) {
+            res.json(currentUser);
+            return;
+        }
+        res.status(400).json(
+            { message: "User Not Found" });
     };
 
     const signout = (req, res) => {
