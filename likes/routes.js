@@ -1,9 +1,15 @@
 import * as dao from "./dao.js";
 
 function LikeRoutes(app){
+
     const createLike = async (req, res) => {
         const like = await dao.createLike(req.body);
         res.json(like);
+    };
+
+    const findExistingLike = async (req, res) => {
+        const existingLike = await dao.findLike(req.params.postId, req.params.likerId);
+        res.json(existingLike);
     };
 
     const findAllLikes = async (req, res) => {
@@ -31,6 +37,7 @@ function LikeRoutes(app){
     app.get("/api/likes/post/:postId", findAllLikesForPost);
     app.get("/api/likes/user/:likerId", findAllLikesForUser);
     app.delete("/api/likes/:likeId", deleteLike);
+    app.get("/api/likes/:postId/:likerId", findExistingLike);
 
 }
 
