@@ -34,11 +34,17 @@ function PostRoutes(app){
         res.json(status);
     };
 
+    const findPostsBySong = async (req, res) => {
+        const posts = await dao.findPostsBySong(req.params.songId);
+        res.json(posts);
+    }
+
     app.post("/api/posts", createPost);
     app.delete("/api/posts/:postId", deletePost);
     app.get("/api/posts", findAllPosts);
     app.get("/api/posts/:postId", findPostById);
     app.get("/api/posts/username/:username", findPostsByUsername);
+    app.get("/api/posts/song/:songId", findPostsBySong);
     app.put("/api/posts/:postId", updatePost);
 
 }
